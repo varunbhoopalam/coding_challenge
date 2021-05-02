@@ -18,7 +18,7 @@ curl -i "http://127.0.0.1:5000/github-profile/mailchimp/bitbucket-profile/mailch
 
 **Response**
 
-```json
+```
  { "status": "failure",
    "data": {
      "code": 404,
@@ -30,7 +30,7 @@ curl -i "http://127.0.0.1:5000/github-profile/mailchimp/bitbucket-profile/mailch
        "name": "mailchimp",
        "found": false
      }
-   }
+   },
    "message": "At least one profile was not found" /* This field is nullable */
  }
 ```
@@ -45,7 +45,7 @@ curl -i "http://127.0.0.1:5000/github-profile/mailchimp/bitbucket-profile/mailch
 
 **Response**
 
-```json
+```
  { "status": "success",
    "data": {
      "public_repo_count": 20,
@@ -56,7 +56,7 @@ curl -i "http://127.0.0.1:5000/github-profile/mailchimp/bitbucket-profile/mailch
      "watcher_count": 15,
      "langauge_count": 8,
      "topics_count": 4
-   }
+   },
    "message": null /* This field is nullable */
  }
 ```
@@ -91,3 +91,4 @@ curl -i "http://127.0.0.1:5000/health-check"
 
 
 ## What'd I'd like to improve on...
+* Add openAPI spec
