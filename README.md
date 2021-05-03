@@ -62,7 +62,7 @@ curl -i "http://127.0.0.1:5000/github-profile/mailchimp/bitbucket-profile/mailch
        , "count": 4
        }
      ],
-     "topics_count": [
+     "topics": [
        { "name": "Flask"
        , "count: 3
        }

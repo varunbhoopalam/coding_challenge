@@ -1,0 +1,3 @@
+
+class ProfileNotFoundError(Exception):
+    pass
