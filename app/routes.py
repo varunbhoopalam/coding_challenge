@@ -2,7 +2,7 @@ import logging
 
 import flask
 from flask import Response, jsonify
-from models import get_profile_statistics
+from service import get_profile_statistics
 from exceptions import ProfileNotFoundError
 
 app = flask.Flask("user_profiles_api")

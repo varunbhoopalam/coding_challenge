@@ -2,6 +2,7 @@ import unittest
 
 from models import Repo, Aggregator
 
+
 class RepoTests(unittest.TestCase):
 
     def test_init(self):
@@ -14,6 +15,7 @@ class RepoTests(unittest.TestCase):
         self.assertEqual(repo.watcher_count, watcher_count)
         self.assertEqual(repo.language, language)
         self.assertEqual(repo.topics, topics)
+
 
 class AggregatorTests(unittest.TestCase):
 
@@ -32,20 +34,20 @@ class AggregatorTests(unittest.TestCase):
     def test_add_languages(self):
         aggregator = Aggregator()
         aggregator.add(Repo(False, 10, "Python", ["Flask"]))
-        self.assertEqual(aggregator.languages, {"Python":1})
+        self.assertEqual(aggregator.languages, {"Python": 1})
         aggregator.add(Repo(False, 10, "Python", ["Flask"]))
-        self.assertEqual(aggregator.languages, {"Python":2})
+        self.assertEqual(aggregator.languages, {"Python": 2})
         aggregator.add(Repo(False, 10, "Java", ["Flask"]))
-        self.assertEqual(aggregator.languages, {"Python":2, "Java":1})
+        self.assertEqual(aggregator.languages, {"Python": 2, "Java": 1})
 
     def test_add_topics(self):
         aggregator = Aggregator()
         aggregator.add(Repo(False, 10, "Python", ["Flask"]))
-        self.assertEqual(aggregator.topics, {"Flask":1})
+        self.assertEqual(aggregator.topics, {"Flask": 1})
         aggregator.add(Repo(False, 10, "Python", ["Flask"]))
-        self.assertEqual(aggregator.topics, {"Flask":2})
+        self.assertEqual(aggregator.topics, {"Flask": 2})
         aggregator.add(Repo(False, 10, "Python", ["Flask", "Numpy"]))
-        self.assertEqual(aggregator.topics, {"Flask":3, "Numpy":1})
+        self.assertEqual(aggregator.topics, {"Flask": 3, "Numpy": 1})
 
     def test_asdict(self):
         aggregator = Aggregator()
@@ -67,11 +69,12 @@ class AggregatorTests(unittest.TestCase):
                 "forked_repo_count": 0
             },
             "watcher_count": 10,
-            "languages": [{"name": "Python", "count":1}],
+            "languages": [{"name": "Python", "count": 1}],
             "topics": [{"name": "Flask", "count": 1}]
         }
         aggregator.add(Repo(True, 10, "Python", ["Flask"]))
         self.assertEqual(aggregator.asdict(), expected2)
+
 
 if __name__ == '__main__':
     unittest.main()
