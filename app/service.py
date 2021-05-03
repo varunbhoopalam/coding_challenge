@@ -1,8 +1,15 @@
 from models import Aggregator
 from exceptions import ProfileNotFoundError, ServiceNotAvailable
 import github_api
+import bitbucket_api
+from requests.exceptions import HTTPException
+
 
 def get_profile_statistics(github_profile, bitbucket_profile):
+    github_repos = []
+    bitbucket_repos = []
+    github_profile_not_found, bitbucket_profile_not_found, github_not_available, bitbucket_not_available = False
+
     try:
         github_repos = github_api.get(github_profile)
     except HTTPException as e:

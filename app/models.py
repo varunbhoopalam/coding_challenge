@@ -10,6 +10,7 @@ class Repo:
 class Aggregator:
 
     def __init__(self):
+        self.count = 0
         self.original_count = 0
         self.forked_count = 0
         self.watcher_count = 0
@@ -17,10 +18,12 @@ class Aggregator:
         self.topics = {}
 
     def add(self, repo):
-        if repo.is_original:
-            self.original_count += 1
-        else:
-            self.forked_count += 1
+        self.count += 1
+        if repo.is_original is not None:
+            if repo.is_original:
+                self.original_count += 1
+            else:
+                self.forked_count += 1
         self.watcher_count += repo.watcher_count
         self.languages[repo.language] = self.languages.get(repo.language, 0) + 1
         for topic in repo.topics:

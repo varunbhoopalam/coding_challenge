@@ -22,14 +22,23 @@ class AggregatorTests(unittest.TestCase):
     def test_add_original(self):
         aggregator = Aggregator()
         aggregator.add(Repo(True, 10, "Python", ["Flask"]))
+        self.assertEqual(aggregator.count, 1)
         self.assertEqual(aggregator.original_count, 1)
         self.assertEqual(aggregator.forked_count, 0)
 
     def test_add_forked(self):
         aggregator = Aggregator()
         aggregator.add(Repo(False, 10, "Python", ["Flask"]))
+        self.assertEqual(aggregator.count, 1)
         self.assertEqual(aggregator.original_count, 0)
         self.assertEqual(aggregator.forked_count, 1)
+
+    def test_add_none(self):
+        aggregator = Aggregator()
+        aggregator.add(Repo(None, 10, "Python", ["Flask"]))
+        self.assertEqual(aggregator.count, 1)
+        self.assertEqual(aggregator.original_count, 0)
+        self.assertEqual(aggregator.forked_count, 0)
 
     def test_add_languages(self):
         aggregator = Aggregator()

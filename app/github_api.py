@@ -17,7 +17,7 @@ def get(github_profile):
 
     url = f"{BASE_URL}/orgs/{github_profile}/repos"
     repos_json = get_repos(url)
-    return [parse_repo(json) for json in repos_json if json.get("private") is False]
+    return [build_repo(json) for json in repos_json if json.get("private") is False]
 
 def get_repos(url):
     response = fetch.get(url, BASE_HEADERS)
@@ -33,7 +33,7 @@ def get_repos(url):
             return response.json()
 
 
-def parse_repo(json):
+def build_repo(json):
     is_original = not json.get("fork")
     watchers_count = json.get("watchers_count")
     language = json.get("language")
