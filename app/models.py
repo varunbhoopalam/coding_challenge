@@ -49,6 +49,9 @@ class Aggregator:
                 "forked_repo_count": self.forked_count
             },
             "watcher_count": self.watcher_count,
-            "languages": list(self.languages.items()),
-            "topics": list(self.topics.items())
+            "languages": to_json_formatted_dict_list(self.languages),
+            "topics": to_json_formatted_dict_list(self.topics)
         }
+
+def to_json_formatted_dict_list(dict):
+    return [{"name": key, "count": value} for (key, value) in dict.items()]
