@@ -109,6 +109,11 @@ python -m run
 curl -i "http://127.0.0.1:5000/health-check"
 ```
 
+### Run Tests
+
+```
+python app/{test_file.py}
+```
 
 ## What'd I'd like to improve on...
 * Add openAPI spec or swagger page
