@@ -76,10 +76,10 @@ curl -i "http://127.0.0.1:5000/github-profile/mailchimp/bitbucket-profile/mailch
 
 * Github API v3 - https://api.github.com
   * Specific route - https://api.github.com/orgs/{org}/repos  
-  * Learn more (here)[https://docs.github.com/en/developers/overview/about-githubs-apis]
+  * Learn more [here](https://docs.github.com/en/developers/overview/about-githubs-apis)
 * Bitbucket API 2.0 - https://api.bitbucket.org
   * Specific route - https://api.bitbucket.org/2.0/repositories/{org}
-  * Learn more (here)[https://developer.atlassian.com/bitbucket/api/2/reference/meta/pagination]
+  * Learn more [here](https://developer.atlassian.com/bitbucket/api/2/reference/meta/pagination)
 
 ## Install:
 
