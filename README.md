@@ -54,8 +54,19 @@ curl -i "http://127.0.0.1:5000/github-profile/mailchimp/bitbucket-profile/mailch
        "forked_repo_count": 10
      },
      "watcher_count": 15,
-     "langauge_count": 8,
-     "topics_count": 4
+     "langauges": [
+       { "name": "Python"
+       , "count": 3
+       },
+       { "name": "Ruby"
+       , "count": 4
+       }
+     ],
+     "topics_count": [
+       { "name": "Flask"
+       , "count: 3
+       }
+     ]
    },
    "message": null /* This field is nullable */
  }
