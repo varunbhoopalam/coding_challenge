@@ -21,7 +21,7 @@ def get(github_profile):
 
 def get_repos(url):
     response = fetch.get(url, BASE_HEADERS)
-    response.raise_for_status()  # Need to handle exceptions in service
+    response.raise_for_status()  # TODO: Need to handle exceptions in service
     next_link = response.headers.get("Link")
     if not next_link:
         return response.json()
