@@ -54,7 +54,7 @@ curl -i "http://127.0.0.1:5000/github-profile/mailchimp/bitbucket-profile/mailch
        "forked_repo_count": 10
      },
      "watcher_count": 15,
-     "langauges": [
+     "languages": [
        { "name": "Python"
        , "count": 3
        },
