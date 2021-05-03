@@ -4,7 +4,7 @@ from requests.adapters import HTTPAdapter
 from requests.packages.urllib3.util.retry import Retry
 
 
-def get(url):
+def get(url, headers):
     """
     Simply http request wrapper with retry logic implemented
 
@@ -14,4 +14,4 @@ def get(url):
     session = requests.Session()
     retries = Retry(total=5, backoff_factor=1, status_forcelist=[502, 503, 504])
     session.mount('https://', HTTPAdapter(max_retries=retries))
-    return session.get(url)
+    return session.get(url, headers=headers)
