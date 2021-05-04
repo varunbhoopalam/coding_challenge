@@ -13,7 +13,7 @@ The githubProfile and bitbucketProfile are passed as path variables. If either p
 **Request**
 
 ```
-curl -i "http://127.0.0.1:5000/github-profile/mailchimp/bitbucket-profile/mailchip/statistics"
+curl -i "http://127.0.0.1:5000/github-profile/mailchimp/bitbucket-profile/mailchimp/statistics"
 ```
 
 **Response**

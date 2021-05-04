@@ -8,7 +8,10 @@ from requests.exceptions import HTTPError
 def get_profile_statistics(github_profile, bitbucket_profile):
     github_repos = []
     bitbucket_repos = []
-    github_profile_not_found, bitbucket_profile_not_found, github_not_available, bitbucket_not_available = False, False, False, False
+    github_profile_not_found = False
+    bitbucket_profile_not_found = False
+    github_not_available = False
+    bitbucket_not_available = False
 
     try:
         github_repos = app.github_api.get(github_profile)
@@ -24,7 +27,7 @@ def get_profile_statistics(github_profile, bitbucket_profile):
             bitbucket_profile_not_found = True
         else:
             bitbucket_not_available = True
-    if github_profile_not_found is True or bitbucket_profile_not_found is True:
+    if github_profile_not_found or bitbucket_profile_not_found:
         raise ProfileNotFoundError("not found", {
             "code": 404,
             "github_profile": {
@@ -36,7 +39,7 @@ def get_profile_statistics(github_profile, bitbucket_profile):
                 "found": not bitbucket_profile_not_found
             }
         })
-    if github_not_available is True or bitbucket_not_available is True:
+    if github_not_available or bitbucket_not_available:
         raise ServiceNotAvailable("service unavailable", {
             "code": 500,
             "github_not_available": github_not_available,
