@@ -13,7 +13,7 @@ The githubProfile and bitbucketProfile are passed as path variables. If either p
 **Request**
 
 ```
-curl -i "http://127.0.0.1:5000/github-profile/mailchimp/bitbucket-profile/mailchimp/statistics"
+curl -i "http://127.0.0.1:5000/github-profile/mailchimp/bitbucket-profile/mailchip/statistics"
 ```
 
 **Response**
@@ -24,10 +24,10 @@ curl -i "http://127.0.0.1:5000/github-profile/mailchimp/bitbucket-profile/mailch
      "code": 404,
      "github_profile": {
        "name": "mailchimp",
-       "found": false
+       "found": true
      },
      "bitbucket_profile": {
-       "name": "mailchimp",
+       "name": "mailchip",
        "found": false
      }
    },
@@ -40,7 +40,7 @@ This is an example of a successful request where both profiles were successfully
 **Request**
 
 ```
-curl -i "http://127.0.0.1:5000/github-profile/mailchimp/bitbucket-profile/mailchip/statistics"
+curl -i "http://127.0.0.1:5000/github-profile/mailchimp/bitbucket-profile/mailchimp/statistics"
 ```
 
 **Response**
@@ -55,15 +55,15 @@ curl -i "http://127.0.0.1:5000/github-profile/mailchimp/bitbucket-profile/mailch
      },
      "watcher_count": 15,
      "languages": [
-       { "name": "Python"
+       { "name": "python"
        , "count": 3
        },
-       { "name": "Ruby"
+       { "name": "ruby"
        , "count": 4
        }
      ],
      "topics": [
-       { "name": "Flask"
+       { "name": "flask"
        , "count: 3
        }
      ]
@@ -117,3 +117,10 @@ python app/{test_file.py}
 
 ## What'd I'd like to improve on...
 * Add openAPI spec or swagger page
+* Finish tests to document behavior
+* Gather more information as to how this api would be used. With more information, we'd potentially know things like expected load, how often request parameters come up, etc and make better decisions as a result. Could accomplish this by
+  * Talking to key stakeholders
+  * Implementing persisted logging with analytics, something like prometheus+grafana
+* Improve Speed, 
+  * Potentially a lot of waiting around on external apis, introduce async to work on tasks concurrently
+  * Caching, especially if the same requests are made over and over
