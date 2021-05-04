@@ -124,3 +124,4 @@ python app/{test_file.py}
 * Improve Speed, 
   * Potentially a lot of waiting around on external apis, introduce async to work on tasks concurrently
   * Caching, especially if the same requests are made over and over
+* Authentication to not be rate limited
