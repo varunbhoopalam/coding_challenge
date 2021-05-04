@@ -25,9 +25,12 @@ class Aggregator:
             else:
                 self.forked_count += 1
         self.watcher_count += repo.watcher_count
-        self.languages[repo.language] = self.languages.get(repo.language, 0) + 1
+        if repo.language:
+            language_lower = repo.language.lower()
+            self.languages[language_lower] = self.languages.get(language_lower, 0) + 1
         for topic in repo.topics:
-            self.topics[topic] = self.topics.get(topic, 0) + 1
+            topic_lower = topic.lower()
+            self.topics[topic_lower] = self.topics.get(topic_lower, 0) + 1
 
     def asdict(self):
         return {
