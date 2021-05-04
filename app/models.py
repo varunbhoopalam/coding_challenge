@@ -31,7 +31,7 @@ class Aggregator:
 
     def asdict(self):
         return {
-            "public_repo_count": self.original_count + self.forked_count,
+            "public_repo_count": self.count,
             "public_repo_breakdown": {
                 "original_repo_count": self.original_count,
                 "forked_repo_count": self.forked_count

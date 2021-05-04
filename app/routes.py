@@ -3,7 +3,7 @@ import logging
 import flask
 from flask import Response, jsonify
 from service import get_profile_statistics
-from exceptions import ProfileNotFoundError
+from exceptions import ProfileNotFoundError, ServiceNotAvailable
 
 app = flask.Flask("user_profiles_api")
 logger = flask.logging.create_logger(app)
@@ -36,3 +36,9 @@ def aggregate_profile_statistics(githubProfile, bitbucketProfile):
             "data": e.data,
             "message": "At least one profile was not found"},
             status=404)
+    except ServiceNotAvailable as e:
+        return Response({
+            "status": "failure",
+            "data": e.data,
+            "message": "At least one service unavailable"},
+            status=500)
