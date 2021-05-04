@@ -1,5 +1,7 @@
-from models import Repo
-import fetch
+from app.models import Repo
+import app.fetch
+
+from flask import current_app
 
 BASE_URL = "https://api.bitbucket.org"
 
@@ -17,7 +19,8 @@ def get(bitbucket_profile):
 
 
 def get_repos(url):
-    response = fetch.get(url, {})
+    response = app.fetch.get(url, {})
+    current_app.logger.info(f"Calling url: {url}")
     response.raise_for_status()
     response_json = response.json()
     next_url = response_json.get("next")
@@ -37,7 +40,7 @@ def build_repo(json):
 def get_watchers_count(watchers_url):
     if not watchers_url:
         return 0
-    response = fetch.get(watchers_url, {})
+    response = app.fetch.get(watchers_url, {})
     if not response.ok:
         return 0
     return response.json().get("size", 0)

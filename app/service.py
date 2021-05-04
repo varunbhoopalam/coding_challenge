@@ -1,26 +1,26 @@
-from models import Aggregator
-from exceptions import ProfileNotFoundError, ServiceNotAvailable
-import github_api
-import bitbucket_api
-from requests.exceptions import HTTPException
+from app.models import Aggregator
+from app.exceptions import ProfileNotFoundError, ServiceNotAvailable
+import app.github_api
+import app.bitbucket_api
+from requests.exceptions import HTTPError
 
 
 def get_profile_statistics(github_profile, bitbucket_profile):
     github_repos = []
     bitbucket_repos = []
-    github_profile_not_found, bitbucket_profile_not_found, github_not_available, bitbucket_not_available = False
+    github_profile_not_found, bitbucket_profile_not_found, github_not_available, bitbucket_not_available = False, False, False, False
 
     try:
-        github_repos = github_api.get(github_profile)
-    except HTTPException as e:
-        if e.response.status_code is 404:
+        github_repos = app.github_api.get(github_profile)
+    except HTTPError as e:
+        if e.response.status_code == 404:
             github_profile_not_found = True
         else:
             github_not_available = True
     try:
-        bitbucket_repos = bitbucket_api.get(bitbucket_profile)
-    except HTTPException as e:
-        if e.response.status_code is 404:
+        bitbucket_repos = app.bitbucket_api.get(bitbucket_profile)
+    except HTTPError as e:
+        if e.response.status_code == 404:
             bitbucket_profile_not_found = True
         else:
             bitbucket_not_available = True

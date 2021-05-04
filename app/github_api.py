@@ -1,5 +1,5 @@
-from models import Repo
-import fetch
+from app.models import Repo
+import app.fetch
 import re
 
 BASE_URL = "https://api.github.com"
@@ -20,7 +20,7 @@ def get(github_profile):
     return [build_repo(json) for json in repos_json if json.get("private") is False]
 
 def get_repos(url):
-    response = fetch.get(url, BASE_HEADERS)
+    response = app.fetch.get(url, BASE_HEADERS)
     response.raise_for_status()
     next_link = response.headers.get("Link")
     if not next_link:
